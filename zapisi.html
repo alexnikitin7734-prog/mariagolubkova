@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мария — записи 2020</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f0ea;--ink:#1c1a17;--muted:#7a746b;--line:#dcd6cc;--dot:#e0402f;--card:#fbf9f5;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.top{max-width:1240px;margin:0 auto;padding:28px 48px 0;font-size:13px;display:flex;justify-content:space-between}
+.top a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.top a:hover{color:var(--ink)}
+.top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+.hero{max-width:1240px;margin:0 auto;padding:72px 48px 40px}
+.hero h1{font:500 clamp(52px,8vw,112px)/.92 var(--serif);letter-spacing:-.02em}
+.hero h1 i{width:.15em;height:.15em;border-radius:50%;background:var(--dot);display:inline-block;margin-left:.06em}
+.hero p{max-width:58ch;color:var(--muted);margin-top:22px;text-wrap:pretty}
+.hero p a,footer a{color:var(--ink);text-underline-offset:3px}
+
+.toc{max-width:1240px;margin:0 auto;padding:0 48px;display:flex;gap:8px;flex-wrap:wrap}
+.toc a{padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:500;text-decoration:none;color:var(--muted);transition:background .2s,color .2s}
+.toc a:hover{background:var(--card);color:var(--ink)}
+
+article{max-width:1240px;margin:0 auto;padding:96px 48px 0;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:72px;align-items:start}
+.meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.meta b{width:7px;height:7px;border-radius:50%;background:var(--dot)}
+article h2{font:500 clamp(40px,5vw,64px)/1 var(--serif);letter-spacing:-.01em;margin:14px 0 22px}
+blockquote{font:italic 500 clamp(22px,2.4vw,30px)/1.25 var(--serif);border-left:2px solid var(--dot);padding:2px 0 2px 22px;margin:0 0 32px;text-wrap:balance}
+
+.rec{display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;background:var(--card);border:1px solid var(--line);border-radius:999px;margin-bottom:12px;max-width:520px}
+.rec .pl{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center}
+.rec .pl svg{width:16px;height:16px;fill:currentColor}
+.rec .pl .pa{display:none}
+.rec.on .pl .pa{display:block}
+.rec.on .pl .pp{display:none}
+.rec .tl{font-size:13px;font-weight:500;white-space:nowrap}
+.rec .bar{flex:1;height:3px;background:var(--line);border-radius:2px;position:relative;cursor:pointer;min-width:60px}
+.rec .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--dot);border-radius:2px;width:0}
+.rec .tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.text{margin-top:34px;max-width:64ch}
+.text h3{font:500 22px var(--serif);margin:34px 0 12px}
+.text p{font-size:16.5px;line-height:1.72;margin-bottom:1.05em;text-wrap:pretty}
+.text .gap{color:var(--muted)}
+.text.fold{max-height:520px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent)}
+.more{margin-top:14px;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid var(--line);border-radius:999px}
+.more:hover{background:var(--card)}
+
+.company{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:64ch}
+.company h3{font:500 30px/1.1 var(--serif)}
+.company .note{color:var(--muted);font-size:13px;margin:6px 0 22px}
+.company ul{list-style:none;display:grid;gap:18px}
+.company li{display:grid;grid-template-columns:190px 1fr;column-gap:24px;row-gap:2px}
+.company .who{font:600 19px/1.25 var(--serif);grid-row:span 2}
+.company .what{font-size:12.5px;color:var(--muted)}
+.company li p{font-size:14.5px;line-height:1.6}
+aside{position:sticky;top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+aside .lbl{grid-column:1/-1;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+aside a{display:block;background:var(--card);overflow:hidden}
+aside img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+aside a:hover img{transform:scale(1.03)}
+
+footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+@media (max-width:900px){
+  .top{padding:20px 16px 0}
+  .hero{padding:44px 16px 28px}
+  .toc{padding:0 16px}
+  article{grid-template-columns:1fr;gap:28px;padding:64px 16px 0}
+  aside{position:static;grid-template-columns:repeat(4,1fr);gap:8px}
+  .text p{font-size:16px}
+  .rec{max-width:none}
+  .company li{grid-template-columns:1fr}
+  .company .who{grid-row:auto}
+  footer{padding:28px 16px 40px;margin-top:80px}
+}
+</style>
+</head>
+<body>
+<div class="top"><a href="./"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Работы</a><a class="lang" href="zapisi-en.html">English</a></div>
+
+<header class="hero">
+  <h1>Записи 2020<i></i></h1>
+  <p>Голосовые заметки из диктофона, февраль–март 2020 года. Расшифровка поправлена: убраны запинки и повторы, слова мои. Рядом работы, которые, как оказалось, про то же самое.</p>
+</header>
+
+<nav class="toc">
+  <a href="#prostranstvo">О пространстве</a>
+  <a href="#svoboda">Идея свободы</a>
+  <a href="#lichnost">О личности</a>
+</nav>
+
+<article id="prostranstvo">
+  <div>
+    <div class="meta"><b></b>21 февраля 2020 · запись №4 и дополнение</div>
+    <h2>О пространстве</h2>
+    <blockquote>Материи не существует. Существует информация о материи, записанная в пространстве.</blockquote>
+    <div class="rec" data-src="audio/prostranstvo.m4a"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Запись</span><span class="bar"><i></i></span><span class="tm">9:04</span></div>
+    <div class="rec" data-src="audio/prostranstvo-dop.m4a"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Дополнение</span><span class="bar"><i></i></span><span class="tm">1:12</span></div>
+    <div class="text">
+      <p>Когда-то уже существовала такая запись. Интересно, может быть, она где-то сохранилась. Думаю, она была подробнее, ёмче и понятнее, потому что сейчас я пытаюсь восстановить её по памяти. По памяти понимания. И мне чего-то не хватает.</p>
+      <p>Если рассматривать всё вокруг — и эту пустоту, и меня — как некую матрицу. Не как матрицу из фильмов, конечно, а как математический массив, где всё очень просто. Есть три плоскости. Большой такой кубик. И в этом кубике какие-то координаты. И такое ощущение, что направление правильное. Похоже на правду.</p>
+      <p>Отправная точка была… Я прямо помню какой. Были четыре стены, пол, потолок. У них было восемь углов, двенадцать рёбер, шесть плоскостей. И вот это количество и разность элементов, интерпретационное разнообразие возможных состояний. Даже вся Вселенная представлялась — правда, при примате идеи детерминизма и демона Лапласа — как некий перебор состояний этой матрицы.</p>
+      <p>Ещё почему-то существует, как аксиома, идея о том, что нет ничего одинакового. Она отлично ложится в эту матрицу. Потому что даже если будут два абсолютно одинаковых тела в двух абсолютно одинаковых матрицах, эти матрицы должны быть куда-то помещены. И одна матрица уже не может являться другой, существуя параллельно и одновременно.</p>
+      <p>Так вот, сейчас меня занимает мысль, что положение моего тела описывается состоянием — неким возбуждением — и информацией, записанной в этих ячейках путём их возбуждения. То есть вот я есть. В пространстве есть точки, которые возбуждены определённым образом, что порождает состояние пространства «Маша». Если я начну двигаться и изменю положение тела, возбудятся уже соседние точки, и Маша станет где-то рядом. А там, где Маши уже нет, пространство изменит своё состояние. Вопрос: будет ли оно помнить, что Маша там была?</p>
+      <p>И тогда получается движение от состояния к состоянию. Но тогда теория о том, что это перебор всего, наверное, невозможна. Иначе в каждом конкретном состоянии, пока я в нём пребываю, всё вокруг должно меняться. Я чуть-чуть изменила себя или своё положение — и вокруг всё начало меняться. Тем не менее версия забавная.</p>
+      <p>Ещё как критика этой версии — вопрос не о времени, а о движении. Если все звёздные системы и прочие макрокосмы движутся внутри этой системы, то я в каждый конкретный момент постоянно смещаюсь по координатам этой самой матрицы. Если, допустим, матрица неподвижна.</p>
+      <p>Ладно. В чём был вопрос? А что внутри-то? Если мы говорим об этих состояниях, которые суть кубика, — что внутри кубика?</p>
+      <p>И в какой-то момент я поняла, что воздуха нет. Есть какие-то вещества, которые просто состояние участка пространства. Его определённое возбуждение — как физический термин. Точка.</p>
+      <h3>Дополнение</h3>
+      <p>Самое важное в этом апдейте. Если всё воспринимать и рассматривать как возбуждение части пространства, определённым образом формирующее тела в этом самом пространстве, то материи как таковой нет. Материи не существует. Существует информация о материи, записанная в пространстве, — о возбуждении определённого состояния пространства. Точка.</p>
+    </div>
+    <section class="company"><h3>В хорошей компании</h3><p class="note">Параллели нашлись позже. Записи сделаны своим ходом.</p><ul><li><div class="who">Уильям Клиффорд</div><div class="what">«О пространственной теории материи», 1876</div><p>Материя — это рябь, небольшие искривления самого пространства. За сорок лет до Эйнштейна.</p></li><li><div class="who">Квантовая теория поля</div><div class="what">XX век</div><p>Частиц как отдельных шариков нет. Электрон — возбуждение электронного поля в каком-то месте. То самое слово «возбуждение».</p></li><li><div class="who">Джон Уилер</div><div class="what">«It from bit», 1989</div><p>Всё сущее в основе своей — информация. Почти дословно «существует информация о материи».</p></li><li><div class="who">Лейбниц и Кант</div><div class="what">«Монадология», 1714; «Критика чистого разума», 1781</div><p>Спор о том, бывают ли две одинаковые вещи. Кант: две одинаковые капли различает только место — как две одинаковые матрицы.</p></li><li><div class="who">Пьер-Симон Лаплас</div><div class="what">«Опыт философии теории вероятностей», 1814</div><p>Демон, который знает положение всего во Вселенной и поэтому видит и прошлое, и будущее. Вселенная как перебор состояний.</p></li><li><div class="who">Конрад Цузе</div><div class="what">«Вычисляющее пространство», 1969</div><p>Вселенная как сетка ячеек, которая пересчитывает свои состояния. Большой кубик с координатами.</p></li></ul></section>
+  </div>
+  <aside>
+    <span class="lbl">Работы рядом</span>
+    <a href="img/p424.jpg" target="_blank"><img src="img/p424_s.jpg" alt="Растительная геометрия, коллаж" loading="lazy"></a>
+    <a href="img/p459.jpg" target="_blank"><img src="img/p459_s.jpg" alt="Растительная геометрия, холст, масло" loading="lazy"></a>
+    <a href="img/ir25.jpg" target="_blank"><img src="img/ir25_s.jpg" alt="Ч/б и красная точка, коллаж" loading="lazy"></a>
+    <a href="img/ir30.jpg" target="_blank"><img src="img/ir30_s.jpg" alt="Ч/б и красная точка, коллаж" loading="lazy"></a>
+  </aside>
+</article>
+
+<article id="svoboda">
+  <div>
+    <div class="meta"><b></b>1 марта 2020 · запись №6 и дополнение</div>
+    <h2>Идея свободы — ложная идея</h2>
+    <blockquote>Абсолютная свобода должна подразумевать абсолютное знание.</blockquote>
+    <div class="rec" data-src="audio/svoboda.m4a"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Запись</span><span class="bar"><i></i></span><span class="tm">3:21</span></div>
+    <div class="rec" data-src="audio/svoboda-dop.m4a"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Дополнение</span><span class="bar"><i></i></span><span class="tm">1:55</span></div>
+    <div class="text">
+      <p>Идея свободы — ложная идея. Я не свободна. Не свободна априорно. Я не свободна ни в чём.</p>
+      <p>Я не свободна в выражении своих мыслей, в их формулировании, потому что я пользуюсь языком, словами. Я не выражаю мысли электрическими импульсами — так, как я их чувствую. Не говоря уже о том, что я не очень-то точно знаю, как я их чувствую: где и чем они формируются, как удерживаются и как происходит их трансформация в вербальную информацию.</p>
+      <p>Я не свободна от мнений других людей. Неважно, есть они или нет, — они есть у меня в голове. Я не свободна от самой себя. От своего внутреннего критика. От воспоминаний о себе, о своих поступках. От изменения точек зрения на себя, на ситуацию, на своё поведение. А это вообще процесс сложно прогнозируемый: наслоение людей, мыслей, идей, впечатлений, ситуаций, опыта даёт мириады тонких слоёв и оттенков, способных повлиять на восприятие того или иного обстоятельства. Более того, эта картина постоянно меняется, меняет оттенки, иногда на противоположные.</p>
+      <p>Я не свободна и в том смысле, что я не свободна не жить. Я не свободна не дышать. Я не свободна не прилипать к поверхности. Я не свободна не спать, не есть, не пить.</p>
+      <p>Я очень детерминирована. Свобода — это иллюзия.</p>
+      <h3>Дополнение</h3>
+      <p>Идея нашей свободы — свободы с маленькой буквы — подразумевает выбор между чем-то и чем-то. А свобода абсолютная должна подразумевать абсолютное знание. Наша маленькая свобода — это лишь высвечивание некоторых узлов вариантов, из которых мы можем сделать выбор.</p>
+      <p>Наверное, свобода присуща только демону Лапласа. Точнее, самому демону Лапласа, развернувшемуся из идеи в некую реальность. При этом он не должен быть физически привязан к этой реальности.</p>
+    </div>
+    <section class="company"><h3>В хорошей компании</h3><p class="note">Параллели нашлись позже. Записи сделаны своим ходом.</p><ul><li><div class="who">Бенедикт Спиноза</div><div class="what">«Этика», 1677</div><p>Люди считают себя свободными, потому что сознают свои желания, но не знают их причин. Свободен лишь Бог, который знает всё.</p></li><li><div class="who">Гегель и Энгельс</div><div class="what">«Анти-Дюринг», 1878</div><p>«Свобода есть осознанная необходимость». Абсолютная свобода как абсолютное знание.</p></li><li><div class="who">Людвиг Витгенштейн</div><div class="what">«Логико-философский трактат», 1921</div><p>«Границы моего языка означают границы моего мира». Несвобода в словах.</p></li><li><div class="who">Дэниел Деннет</div><div class="what">«Свобода эволюционирует», 2003</div><p>Свобода — не «да» или «нет», а шкала: кто видит больше вариантов, тот свободнее. «Высвечивание узлов вариантов».</p></li><li><div class="who">Дэвид Вулперт</div><div class="what">«Физические пределы вывода», 2008</div><p>Доказал, что устройство внутри Вселенной не может предсказать всё, в том числе себя. Поэтому демон и должен быть не привязан к реальности.</p></li></ul></section>
+  </div>
+  <aside>
+    <span class="lbl">Работы рядом</span>
+    <a href="img/ir34.jpg" target="_blank"><img src="img/ir34_s.jpg" alt="Коллаж" loading="lazy"></a>
+    <a href="img/ir33.jpg" target="_blank"><img src="img/ir33_s.jpg" alt="Коллаж" loading="lazy"></a>
+    <a href="img/p460.jpg" target="_blank"><img src="img/p460_s.jpg" alt="Растительная геометрия, холст, масло" loading="lazy"></a>
+    <a href="img/ir37.jpg" target="_blank"><img src="img/ir37_s.jpg" alt="Коллаж" loading="lazy"></a>
+  </aside>
+</article>
+
+<article id="lichnost">
+  <div>
+    <div class="meta"><b></b>4 марта 2020 · запись №10</div>
+    <h2>О личности</h2>
+    <blockquote>Может быть, взять личность не как начальный, априорный этап, а как финальный — целеполагающий.</blockquote>
+    <div class="rec" data-src="audio/lichnost.m4a"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Запись</span><span class="bar"><i></i></span><span class="tm">26:34</span></div>
+    <div class="text fold">
+      <p>Рассуждения на тему личности. Наверное, во всём хочется найти какой-то вариант. За неимением реальных и достоверных способов эмпирического познания сейчас приемлемым представляется перебор: придумать вариант и сфокусироваться на нём как на приемлемой версии. Такую выборку я и хочу проделать для понятия личности.</p>
+      <p>Самое очевидное — личность как совокупность ответных реакций на внешние раздражители с течением жизни. Возьмём несколько мысленных экспериментов.</p>
+      <h3>ДНК и тело</h3>
+      <p>Предположим, личность может зависеть от ДНК. И от физиологических особенностей, которые зависят не только от ДНК как программы, но и от реальных условий окружающего мира, — они вносят свои коррективы в работу программы.</p>
+      <h3>Душа</h3>
+      <p>Личность как душа человека. Душа — целокупный неделимый паттерн, с мифологической точки зрения некая субстанция личностного характера. Бессмертная. Не привязанная к материи и, возможно, к жизни — то есть не запертая в процессе жизни как пути из точки рождения в точку смерти. А нечто целостное. Вот, наверное, важное понятие: нечто целостное, существующее вне жизни как процесса от рождения до смерти.</p>
+      <p>Тут я различаю «жизнь» в общечеловеческом понимании — от рождения до смерти — и жизнь в моём понимании, где жизнь — это всё вокруг происходящее как целостный процесс, включающий в себя всё. Вот всё.</p>
+      <p>Во многих религиях и мифологиях понятие души, духа — важная часть концепции. О ней говорится, что она априорна… хотя нет, не априорна. Ей можно навредить. Она бывает чёрной — в значении «плохая». Тогда получается, что даже вне процесса «рождение — жизнь — смерть» душа может трансформироваться, приобретя или изменив какие-то качества. В целом концепция целостности — личность, душа, абсолют личностный — представляется интересной. Но влияние процесса, который к тому же не является управляемым, на абсолютную субстанцию не кажется логичным. Соответственно, с ней мы распрощаемся.</p>
+      <h3>Что лежит в основе</h3>
+      <p>Если личность — это изменчивость, то в основе изменчивости лежит какая-то логика. Даже если логика не абсолютная, а случайная, где-то в основе должно лежать что-то абсолютное. Что абсолютное может быть ей присуще?</p>
+      <p>Ограничимся человеческим видом. Как мысленный эксперимент: неважны раса, пол, время жизни и так далее. Что остаётся? Физические условия жизни крайне различны — от исходных данных до нутриентов. Если поместить в одинаковые условия разные изначальные личности, мы получим разные типы развития. Или, наоборот, поместив одну и ту же личность в разные исходные данные, мы тоже что-то получим.</p>
+      <p>Если это характеристики или алгоритмы — или и то и другое, и ещё что-то неучтённое, — то их количество, скорее всего, конечно. Сколько их может быть? Не очень много, если честно. Поэтому концепция души представляется сомнительной. Сейчас семь миллиардов человек. Это что, семь миллиардов душ? И все они разные — прямо принципиально разные? И это только на Земле? А где они потом? Нет, мне это не нравится.</p>
+      <p>При этом концепция Абсолюта мне нравится. И концепция личности — начальных сущностей с уникальными особенностями — очень симпатичная. Но если поместить её в существующую реальность, как-то слишком много уникальностей. Получается, концепцию личности приходится отвергать.</p>
+      <h3>Личность как финал</h3>
+      <p>Может быть, взять личность не как начальный и априорный этап, а как финальный, заключительный, целеполагающий? Тогда, кстати, получается неплохо. Есть сколько угодно существ. И есть потенция — их как бы ещё нет, личностей. И у всех этих существ есть возможность, способность, вероятность, вариантность, потребность этими личностями стать.</p>
+      <p>Принимая эту цепочку рассуждений, путь достижения личности заключается в достижении каких-то свойств. И нет, наверное, готовых масок, которые ждут: «будешь мне соответствовать — будешь мной». Скорее какие-то качества выкристаллизовываются в абсолютные значения.</p>
+      <p>Варианты разделим. Вариант, где рамки уже заведомо существуют. И вариант, где рамок нет, но есть целостная совокупность. Индивидуум занимает часть этой целостности. Следующий индивид тоже может попасть в неё — это как массив всех данных, из которого исключаются данные уже существующего индивида. Каждый забирает с собой какой-то объём: может заполнить одну сорок восьмую, может одну шестую, может половину. А может ли заполнить всё? Чисто теоретически, наверное, может — развив в себе все черты личности до абсолюта. Непонятно, как это возможно, но почему нет.</p>
+      <p>И если они не предопределены, а высчитываются вычитанием из массива, то с каждым новым существом подбор усложняется. И это не очень честно получается: кто-то дошёл — а там уже кто-то есть. Такой же, или не такой, но тоже с абсолютными, только другими, противоречащими свойствами. Что-то не то.</p>
+      <p>Тогда простой вариант. Есть множество, оно уже поделено, свойства определены. Возьмём одно свойство, основополагающее. Допустим, их восемь. И вот этот перебор, перебор — и кто-то перебрался, и он в множестве. Потом кто-то другой. И тогда вопрос: что происходит в этом множестве, когда кто-то перебрался? По сути, я говорю о процессе обожествления.</p>
+      <p>Возьмём исторических личностей, доведших себя до абсолюта: Христа, Будду. Вот Будда: развивает себя, рассказывает, книжки пишут — и он исчезает из мира. Какой тогда во всём этом смысл? Наверное, он просто записывается в коллекцию. Сидит где-то, смотрит, где все остальные. Непонятно. А зачем тогда вообще весь перебор? Просто игра? Или идёт поиск этих личностей? А нужно это всё зачем? Поиск целостности?</p>
+      <p>Ой, я чуть запуталась. Интересно.</p>
+      <p class="gap">Часть записи в расшифровку не попала — её можно дослушать.</p>
+    </div>
+    <button class="more" data-more>Читать целиком</button>
+    <section class="company"><h3>В хорошей компании</h3><p class="note">Параллели нашлись позже. Записи сделаны своим ходом.</p><ul><li><div class="who">Георгий Гурджиев</div><div class="what">в книге П. Успенского «В поисках чудесного», 1949</div><p>У человека от рождения нет души, её можно только создать работой над собой. Его слово — «кристаллизация».</p></li><li><div class="who">Жан-Поль Сартр</div><div class="what">«Экзистенциализм — это гуманизм», 1946</div><p>«Существование предшествует сущности». Сначала ты есть, а кем станешь — не задано. Личность как финал, а не начало.</p></li><li><div class="who">Пьер Тейяр де Шарден</div><div class="what">«Феномен человека», 1955</div><p>Эволюция сходится к «точке Омега», где личности собираются в целостность, не растворяясь.</p></li><li><div class="who">Георг Гегель</div><div class="what">«Феноменология духа», 1807</div><p>Абсолют приходит к самосознанию через историю и людей. Ответ на «зачем весь перебор — поиск целостности?».</p></li><li><div class="who">Буддизм</div><div class="what">учение об анатмане и нирване</div><p>Нирвана — не место в коллекции, а угасание отдельности. Будда не занимает долю целого, а перестаёт от него отличаться.</p></li></ul></section>
+  </div>
+  <aside>
+    <span class="lbl">Работы рядом</span>
+    <a href="img/ir12.jpg" target="_blank"><img src="img/ir12_s.jpg" alt="Лица, коллаж" loading="lazy"></a>
+    <a href="img/ir11.jpg" target="_blank"><img src="img/ir11_s.jpg" alt="Лица, коллаж" loading="lazy"></a>
+    <a href="img/ir9.jpg" target="_blank"><img src="img/ir9_s.jpg" alt="Лица, коллаж" loading="lazy"></a>
+    <a href="img/ta1.jpg" target="_blank"><img src="img/ta1_s.jpg" alt="Лица, коллаж" loading="lazy"></a>
+  </aside>
+</article>
+
+<footer>Мария · записи 2020</footer>
+
+<script>
+const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+let playing = null;
+document.querySelectorAll('.rec').forEach(r => {
+  const a = new Audio();
+  a.preload = 'none';
+  const bar = r.querySelector('.bar'), fill = bar.querySelector('i'), tm = r.querySelector('.tm'), total = tm.textContent;
+  r.querySelector('.pl').onclick = () => {
+    if (!a.src) a.src = r.dataset.src;
+    if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } else a.pause();
+  };
+  a.onplay = () => r.classList.add('on');
+  a.onpause = () => r.classList.remove('on');
+  a.ontimeupdate = () => { if (a.duration) { fill.style.width = a.currentTime / a.duration * 100 + '%'; tm.textContent = fmt(a.currentTime) + ' / ' + total; } };
+  a.onended = () => { fill.style.width = '0'; tm.textContent = total; };
+  bar.onclick = e => {
+    if (!a.src) a.src = r.dataset.src;
+    const k = (e.clientX - bar.getBoundingClientRect().left) / bar.clientWidth;
+    const go = () => { a.currentTime = k * a.duration; if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } };
+    if (a.duration) go();
+    else { a.addEventListener('loadedmetadata', go, {once: true}); a.load(); }
+  };
+});
+document.querySelectorAll('[data-more]').forEach(b => b.onclick = () => { b.previousElementSibling.classList.remove('fold'); b.remove(); });
+</script>
+</body>
+</html>

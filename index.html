@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мария — работы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f0ea;--ink:#1c1a17;--muted:#7a746b;--line:#dcd6cc;--dot:#e0402f;--card:#fbf9f5;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.hero{padding:96px 48px 56px;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
+.hero h1{font:500 clamp(56px,9vw,128px)/.9 var(--serif);letter-spacing:-.02em;display:flex;align-items:baseline;gap:.08em}
+.hero h1 i{width:.16em;height:.16em;border-radius:50%;background:var(--dot);display:inline-block}
+.hero p{font:italic 500 clamp(20px,2.2vw,28px)/1.2 var(--serif);color:var(--muted);margin-top:16px}
+.hero .side{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.hero .count{font-size:13px;color:var(--muted);text-align:right;letter-spacing:.04em}
+.zap{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--ink);border-radius:999px;font:500 14px var(--sans);color:var(--ink);text-decoration:none;transition:background .2s,color .2s}
+.zap:hover{background:var(--ink);color:var(--bg)}
+.zap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav ul{position:relative;list-style:none;display:flex;gap:6px;max-width:1440px;margin:0 auto;padding:12px 48px;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:background .2s,color .2s}
+.nav a:hover{color:var(--ink);background:var(--card)}
+.nav a.on{color:var(--bg);background:var(--ink)}
+
+main{max-width:1440px;margin:0 auto;padding:0 48px 120px}
+section{padding-top:80px}
+.sh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px;align-items:end;padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.sh h2{font:500 clamp(34px,4vw,52px)/1 var(--serif);letter-spacing:-.01em}
+.sh h2 span{font:500 13px var(--sans);color:var(--muted);margin-left:12px;letter-spacing:.04em;vertical-align:middle}
+.sh p{color:var(--muted);max-width:52ch;justify-self:end;text-wrap:pretty}
+
+.grid{columns:4 260px;column-gap:20px}
+.grid.pairs{columns:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0 20px;align-items:start}
+.grid.pairs .w:nth-child(4n+3){padding-left:20px;border-left:1px solid var(--line)}
+.grid .w.half{grid-column:2/span 2;padding-left:0;border-left:0}
+.grid.lead{columns:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0 20px;align-items:start}
+.grid.lead .w:first-child{grid-column:2/span 2}
+.grid.lead .w:nth-child(2),.grid.lead .w:last-child{grid-column:1}
+.w{break-inside:avoid;margin-bottom:28px;display:block;width:100%;text-align:left}
+.w .ph{background:var(--card);overflow:hidden;border-radius:2px}
+.w img{width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s;opacity:0}
+.w img.ld{opacity:1}
+.w:hover img{transform:scale(1.025)}
+.w .cap{padding-top:9px;font-size:12.5px;color:var(--muted);line-height:1.4}
+.w .cap b{display:block;font:500 17px/1.25 var(--serif);color:var(--ink)}
+.w.arc .ph{opacity:.82}
+.w.arc .cap::after{content:' · архив';opacity:.7}
+.more{padding:72px 0 0;text-align:center}
+.more a{display:inline-block;padding:12px 22px;border:1px dashed var(--line);border-radius:999px;color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s,border-color .2s}
+.more a:hover{color:var(--ink);border-color:var(--ink)}
+.w:focus-visible{outline:2px solid var(--dot);outline-offset:4px}
+
+footer{max-width:1440px;margin:0 auto;padding:40px 48px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between}
+
+.lb{position:fixed;inset:0;z-index:20;background:rgba(20,18,16,.96);display:none;color:#eee7dc}
+.lb.open{display:grid;grid-template-rows:1fr auto}
+.lb figure{display:flex;align-items:center;justify-content:center;padding:56px 88px 12px;min-height:0}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;user-select:none}
+.lb figcaption{text-align:center;padding:10px 24px 28px;font-size:13px;color:#a9a196}
+.lb figcaption b{font:500 20px var(--serif);color:#eee7dc;margin-right:10px}
+.lb .x,.lb .pv,.lb .nx{position:absolute;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;transition:background .2s}
+.lb .x:hover,.lb .pv:hover,.lb .nx:hover{background:rgba(255,255,255,.1)}
+.lb .x{top:14px;right:14px}
+.lb .pv{left:20px;top:50%;translate:0 -50%}
+.lb .nx{right:20px;top:50%;translate:0 -50%}
+.lb svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.lb .n{position:absolute;top:26px;left:28px;font-size:12px;letter-spacing:.06em;color:#8d867b}
+
+@media (max-width:760px){
+  html{scroll-padding-top:60px}
+  .hero{padding:56px 16px 32px;grid-template-columns:1fr}
+  .hero .side{align-items:flex-start}
+  .hero .count{text-align:left}
+  .nav ul{padding:10px 16px}
+  main{padding:0 16px 80px}
+  section{padding-top:56px}
+  .sh{grid-template-columns:1fr;gap:10px;padding-bottom:18px;margin-bottom:18px}
+  .sh p{justify-self:start}
+  .grid{columns:2;column-gap:12px}
+  .grid.pairs{grid-template-columns:repeat(2,1fr);gap:0 12px}
+  .grid.pairs .w:nth-child(4n+3){padding-left:0;border-left:0}
+  .grid.lead{grid-template-columns:repeat(2,1fr);gap:0 12px}
+  .grid.lead .w:first-child{grid-column:1/span 2}
+  .grid .w.half{grid-column:1/span 2}
+  .w{margin-bottom:18px}
+  .w .cap{font-size:11.5px}
+  .w .cap b{font-size:15px}
+  footer{padding:28px 16px 40px;flex-direction:column;gap:6px}
+  .lb figure{padding:60px 8px 8px}
+  .lb .pv,.lb .nx{top:auto;bottom:16px;translate:none}
+  .lb figcaption{padding:8px 72px 28px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div>
+    <h1 id="author">Мария<i></i></h1>
+    <p id="subtitle"></p>
+  </div>
+  <div class="side"><a class="zap" href="kosmos.html">Туманность<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="zap" href="zapisi.html">Записи 2020<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="count" id="count"></div></div>
+</header>
+<nav class="nav"><ul id="nav"></ul></nav>
+<main id="main"></main>
+<footer><span id="foot"></span><span>dakia_damn</span></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <span class="n" id="lbn"></span>
+  <button class="x" id="lbx" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="pv" id="lbp" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="nx" id="lbnx" aria-label="Вперёд"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <figure><img id="lbi" alt=""></figure>
+  <figcaption id="lbc"></figcaption>
+</div>
+
+<script>
+(async () => {
+  const d = await (await fetch('works.json?v=' + Date.now())).json();
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const all = [];
+  $('author').firstChild.textContent = d.author;
+  $('subtitle').textContent = d.subtitle;
+  $('foot').textContent = d.author + ', ' + new Date().getFullYear();
+  document.title = d.author + ' — работы';
+
+  const cap = w => {
+    const meta = [w.tech, w.year].filter(Boolean).map(esc).join(', ');
+    return (w.title ? '<b>' + esc(w.title) + '</b>' : '') + meta;
+  };
+
+  const full = new URLSearchParams(location.search).has('vse');
+  const hiddenN = d.sections.reduce((n, s) => n + s.works.filter(w => w.hidden).length, 0);
+  d.sections = d.sections.map(s => ({...s, works: s.works.filter(w => full || !w.hidden)})).filter(s => s.works.length);
+  $('nav').innerHTML = d.sections.map(s => `<li><a href="#${s.id}">${esc(s.title)}</a></li>`).join('');
+  $('main').innerHTML = d.sections.map(s => `
+    <section id="${s.id}">
+      <div class="sh"><h2>${esc(s.title)}<span>${s.works.length}</span></h2>${s.intro ? `<p>${esc(s.intro)}</p>` : ''}</div>
+      <div class="grid${s.layout ? ' ' + s.layout : ''}">${s.works.map(w => {
+        const i = all.push(w) - 1;
+        return `<button class="w${w.hidden ? ' arc' : ''}${w.half ? ' half' : ''}" data-i="${i}"><div class="ph"><img src="img/${w.img}_s.jpg${w.v ? '?v=' + w.v : ''}" width="${w.w}" height="${w.h}" loading="lazy" alt="${esc(w.title || s.title)}" onload="this.classList.add('ld')"></div><div class="cap">${cap(w)}</div></button>`;
+      }).join('')}</div>
+    </section>`).join('') + `
+    <div class="more"><a href="${full ? './' : '?vse'}">${full ? 'Только главное' : 'Для любопытных: ещё ' + hiddenN + ' — упражнения, старое, архив фото'}</a></div>`;
+  $('count').textContent = all.length + ' работ';
+
+  let cur = 0;
+  const lb = $('lb'), lbi = $('lbi');
+  const show = i => {
+    cur = (i + all.length) % all.length;
+    pi = -1;
+    const w = all[cur];
+    lbi.src = 'img/' + w.img + '.jpg' + (w.v ? '?v=' + w.v : '');
+    $('lbc').innerHTML = cap(w);
+    $('lbn').textContent = (cur + 1) + ' / ' + all.length;
+    [-1, 1].forEach(k => { const p = all[(cur + k + all.length) % all.length]; new Image().src = 'img/' + p.img + '.jpg' + (p.v ? '?v=' + p.v : ''); });
+  };
+  const open = i => { show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; lbi.removeAttribute('src'); };
+
+  $('main').addEventListener('click', e => { const b = e.target.closest('.w'); if (b) open(+b.dataset.i); });
+  let pi = -1;
+  const onEgg = e => {
+    const w = all[cur]; if (!w.process) return false;
+    if (pi >= 0 || !w.egg) return true;
+    const r = lbi.getBoundingClientRect();
+    return Math.hypot((e.clientX - r.left) / r.width - w.egg[0], (e.clientY - r.top) / r.width - w.egg[1] * r.height / r.width) < .04;
+  };
+  lbi.addEventListener('mousemove', e => { lbi.style.cursor = onEgg(e) ? 'pointer' : ''; });
+  lbi.addEventListener('click', e => {
+    if (!onEgg(e)) return;
+    const w = all[cur];
+    pi = pi + 1 < w.process.length ? pi + 1 : -1;
+    lbi.src = 'img/' + (pi < 0 ? w.img : w.process[pi]) + '.jpg';
+    $('lbn').textContent = pi < 0 ? (cur + 1) + ' / ' + all.length : 'как делалось · ' + (pi + 1) + ' / ' + w.process.length;
+  });
+  $('lbx').onclick = close;
+  $('lbp').onclick = () => show(cur - 1);
+  $('lbnx').onclick = () => show(cur + 1);
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+  let sx = null;
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive: true});
+  lb.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  });
+
+  const links = [...document.querySelectorAll('.nav a')];
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    links.forEach(a => {
+      const on = a.getAttribute('href') === '#' + en.target.id;
+      a.classList.toggle('on', on);
+      if (on) a.parentNode.parentNode.scrollTo({left: a.parentNode.offsetLeft - (a.parentNode.parentNode.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+    });
+  }), {rootMargin: '-40% 0px -55% 0px'});
+  document.querySelectorAll('section').forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

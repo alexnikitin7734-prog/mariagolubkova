@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maria — Notes 2020</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f0ea;--ink:#1c1a17;--muted:#7a746b;--line:#dcd6cc;--dot:#e0402f;--card:#fbf9f5;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.top{max-width:1240px;margin:0 auto;padding:28px 48px 0;font-size:13px;display:flex;justify-content:space-between}
+.top a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.top a:hover{color:var(--ink)}
+.top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+.hero{max-width:1240px;margin:0 auto;padding:72px 48px 40px}
+.hero h1{font:500 clamp(52px,8vw,112px)/.92 var(--serif);letter-spacing:-.02em}
+.hero h1 i{width:.15em;height:.15em;border-radius:50%;background:var(--dot);display:inline-block;margin-left:.06em}
+.hero p{max-width:58ch;color:var(--muted);margin-top:22px;text-wrap:pretty}
+.hero p a,footer a{color:var(--ink);text-underline-offset:3px}
+
+.toc{max-width:1240px;margin:0 auto;padding:0 48px;display:flex;gap:8px;flex-wrap:wrap}
+.toc a{padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:500;text-decoration:none;color:var(--muted);transition:background .2s,color .2s}
+.toc a:hover{background:var(--card);color:var(--ink)}
+
+article{max-width:1240px;margin:0 auto;padding:96px 48px 0;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:72px;align-items:start}
+.meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.meta b{width:7px;height:7px;border-radius:50%;background:var(--dot)}
+article h2{font:500 clamp(40px,5vw,64px)/1 var(--serif);letter-spacing:-.01em;margin:14px 0 22px}
+blockquote{font:italic 500 clamp(22px,2.4vw,30px)/1.25 var(--serif);border-left:2px solid var(--dot);padding:2px 0 2px 22px;margin:0 0 32px;text-wrap:balance}
+
+.rec{display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;background:var(--card);border:1px solid var(--line);border-radius:999px;margin-bottom:12px;max-width:520px}
+.rec .pl{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center}
+.rec .pl svg{width:16px;height:16px;fill:currentColor}
+.rec .pl .pa{display:none}
+.rec.on .pl .pa{display:block}
+.rec.on .pl .pp{display:none}
+.rec .tl{font-size:13px;font-weight:500;white-space:nowrap}
+.rec .bar{flex:1;height:3px;background:var(--line);border-radius:2px;position:relative;cursor:pointer;min-width:60px}
+.rec .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--dot);border-radius:2px;width:0}
+.rec .tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.text{margin-top:34px;max-width:64ch}
+.text h3{font:500 22px var(--serif);margin:34px 0 12px}
+.text p{font-size:16.5px;line-height:1.72;margin-bottom:1.05em;text-wrap:pretty}
+.text .gap{color:var(--muted)}
+.text.fold{max-height:520px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent)}
+.more{margin-top:14px;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid var(--line);border-radius:999px}
+.more:hover{background:var(--card)}
+
+.company{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:64ch}
+.company h3{font:500 30px/1.1 var(--serif)}
+.company .note{color:var(--muted);font-size:13px;margin:6px 0 22px}
+.company ul{list-style:none;display:grid;gap:18px}
+.company li{display:grid;grid-template-columns:190px 1fr;column-gap:24px;row-gap:2px}
+.company .who{font:600 19px/1.25 var(--serif);grid-row:span 2}
+.company .what{font-size:12.5px;color:var(--muted)}
+.company li p{font-size:14.5px;line-height:1.6}
+aside{position:sticky;top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+aside .lbl{grid-column:1/-1;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+aside a{display:block;background:var(--card);overflow:hidden}
+aside img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+aside a:hover img{transform:scale(1.03)}
+
+footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+@media (max-width:900px){
+  .top{padding:20px 16px 0}
+  .hero{padding:44px 16px 28px}
+  .toc{padding:0 16px}
+  article{grid-template-columns:1fr;gap:28px;padding:64px 16px 0}
+  aside{position:static;grid-template-columns:repeat(4,1fr);gap:8px}
+  .text p{font-size:16px}
+  .rec{max-width:none}
+  .company li{grid-template-columns:1fr}
+  .company .who{grid-row:auto}
+  footer{padding:28px 16px 40px;margin-top:80px}
+}
+</style>
+</head>
+<body>
+<div class="top"><a href="./"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Works</a><a class="lang" href="zapisi.html">Русский</a></div>
+
+<header class="hero">
+  <h1>Notes 2020<i></i></h1>
+  <p>Voice notes from a phone recorder, February–March 2020, translated from Russian. The English audio is read by a synthetic voice. The original — my own voice and the Russian text — is in the <a href="zapisi.html">Russian version</a>.</p>
+</header>
+
+<nav class="toc"><a href="#prostranstvo">On Space</a><a href="#svoboda">The Idea of Freedom</a><a href="#lichnost">On Personality</a></nav>
+
+<article id="prostranstvo">
+  <div>
+    <div class="meta"><b></b>21 February 2020 · note no. 4 and addendum</div>
+    <h2>On Space</h2>
+    <blockquote>Matter does not exist. What exists is information about matter, written into space.</blockquote>
+    <div class="rec" data-src="audio/en-prostranstvo.mp3"><button class="pl" aria-label="Play"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Note</span><span class="bar"><i></i></span><span class="tm">3:07</span></div><div class="rec" data-src="audio/en-prostranstvo-dop.mp3"><button class="pl" aria-label="Play"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Addendum</span><span class="bar"><i></i></span><span class="tm">0:23</span></div>
+    <div class="text"><p>There used to be a recording like this once. I wonder if it survived somewhere. I think it was more detailed, more compact and clearer, because now I am trying to restore it from memory. From the memory of understanding. And something is missing.</p><p>Suppose we look at everything around — this emptiness, and me — as a kind of matrix. Not the matrix from the films, of course, but a mathematical array where everything is very simple. There are three planes. A big cube. And inside this cube, some coordinates. And I have the feeling that the direction is right. It looks like the truth.</p><p>The starting point was… I remember it exactly. There were four walls, a floor and a ceiling. Eight corners, twelve edges, six planes. And this number and difference of elements, this interpretive variety of possible states. Even the whole Universe seemed — granted, under the primacy of determinism and Laplace’s demon — a kind of enumeration of the states of this matrix.</p><p>For some reason there is also, as an axiom, the idea that nothing is identical. It fits this matrix perfectly. Because even if there were two absolutely identical bodies in two absolutely identical matrices, those matrices would have to be placed somewhere. And one matrix can no longer be the other, existing in parallel and at the same time.</p><p>So what occupies me now is the thought that the position of my body is described by a state — a kind of excitation — and by information written into these cells by exciting them. So here I am. In space there are points excited in a certain way, and this produces a state of space called “Masha”. If I start moving and change the position of my body, the neighbouring points get excited, and Masha appears somewhere nearby. And where Masha no longer is, space changes its state. The question is: will it remember that Masha was there?</p><p>Then we get a movement from state to state. But then the theory that it is all an enumeration is probably impossible. Otherwise, in each particular state, while I am in it, everything around would have to change. I changed myself or my position a little — and everything around started changing. Still, it is an amusing version.</p><p>One more critique of this version — a question not about time but about motion. If all the star systems and other macrocosms move inside this system, then at every moment I am constantly shifting along the coordinates of this very matrix. Assuming, say, that the matrix itself is still.</p><p>All right. What was the question? What is inside? If we talk about these states that make up the cube — what is inside the cube?</p><p>And at some point I realised that there is no air. There are substances that are simply the state of a region of space. Its particular excitation — as a physical term. Full stop.</p><h3>Addendum</h3><p>The most important thing in this update. If we perceive and consider everything as an excitation of a part of space that forms bodies in this very space in a certain way, then there is no matter as such. Matter does not exist. What exists is information about matter, written into space — about the excitation of a certain state of space. Full stop.</p></div>
+    <section class="company"><h3>In good company</h3><p class="note">These parallels were found later. The notes came on their own.</p><ul><li><div class="who">William Clifford</div><div class="what">“On the Space-Theory of Matter”, 1876</div><p>Matter as small ripples, tiny curvatures of space itself. Forty years before Einstein.</p></li><li><div class="who">Quantum field theory</div><div class="what">20th century</div><p>There are no particles as separate little balls. An electron is an excitation of the electron field at some point. The very word “excitation”.</p></li><li><div class="who">John Wheeler</div><div class="what">“It from bit”, 1989</div><p>Everything that exists is, at bottom, information. Almost word for word: “what exists is information about matter”.</p></li><li><div class="who">Leibniz and Kant</div><div class="what">Monadology, 1714; Critique of Pure Reason, 1781</div><p>The argument over whether two identical things can exist. Kant: two identical drops of water differ only in place — like two identical matrices.</p></li><li><div class="who">Pierre-Simon Laplace</div><div class="what">A Philosophical Essay on Probabilities, 1814</div><p>A demon who knows the position of everything in the Universe and therefore sees both past and future. The Universe as an enumeration of states.</p></li><li><div class="who">Konrad Zuse</div><div class="what">Calculating Space, 1969</div><p>The Universe as a grid of cells recomputing its own states. A big cube with coordinates.</p></li></ul></section>
+  </div>
+  <aside><span class="lbl">Related works</span><a href="img/p424.jpg" target="_blank"><img src="img/p424_s.jpg" alt="Plant Geometry, collage" loading="lazy"></a><a href="img/p459.jpg" target="_blank"><img src="img/p459_s.jpg" alt="Plant Geometry, oil on canvas" loading="lazy"></a><a href="img/ir25.jpg" target="_blank"><img src="img/ir25_s.jpg" alt="Black and white with a red dot, collage" loading="lazy"></a><a href="img/ir30.jpg" target="_blank"><img src="img/ir30_s.jpg" alt="Black and white with a red dot, collage" loading="lazy"></a></aside>
+</article>
+<article id="svoboda">
+  <div>
+    <div class="meta"><b></b>1 March 2020 · note no. 6 and addendum</div>
+    <h2>The Idea of Freedom Is a False Idea</h2>
+    <blockquote>Absolute freedom must imply absolute knowledge.</blockquote>
+    <div class="rec" data-src="audio/en-svoboda.mp3"><button class="pl" aria-label="Play"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Note</span><span class="bar"><i></i></span><span class="tm">1:23</span></div><div class="rec" data-src="audio/en-svoboda-dop.mp3"><button class="pl" aria-label="Play"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Addendum</span><span class="bar"><i></i></span><span class="tm">0:29</span></div>
+    <div class="text"><p>The idea of freedom is a false idea. I am not free. Not free a priori. I am not free in anything.</p><p>I am not free in expressing my thoughts, in formulating them, because I use language, words. I do not express thoughts as electrical impulses — the way I feel them. Not to mention that I do not really know how I feel them: where and with what they form, how they are held, and how they turn into verbal information.</p><p>I am not free from other people’s opinions. It does not matter whether they exist or not — they exist in my head. I am not free from myself. From my inner critic. From memories of myself, of my actions. From changes in how I see myself, the situation, my behaviour. And that is a process that is hard to predict: layers of people, thoughts, ideas, impressions, situations and experience produce myriads of thin layers and shades that can affect how any circumstance is perceived. Moreover, this picture keeps changing, shifting its shades, sometimes to the opposite.</p><p>I am not free in the sense that I am not free not to live. I am not free not to breathe. I am not free not to stick to the surface. I am not free not to sleep, not to eat, not to drink.</p><p>I am very determined. Freedom is an illusion.</p><h3>Addendum</h3><p>The idea of our freedom — freedom with a small letter — implies a choice between something and something. But absolute freedom must imply absolute knowledge. Our small freedom is merely the lighting-up of some nodes of options from which we can choose.</p><p>Perhaps freedom belongs only to Laplace’s demon. More precisely, to the demon himself, unfolded from an idea into some kind of reality. And he must not be physically bound to that reality.</p></div>
+    <section class="company"><h3>In good company</h3><p class="note">These parallels were found later. The notes came on their own.</p><ul><li><div class="who">Baruch Spinoza</div><div class="what">Ethics, 1677</div><p>People think themselves free because they are aware of their desires but ignorant of their causes. Only God, who knows everything, is free.</p></li><li><div class="who">Hegel and Engels</div><div class="what">Anti-Dühring, 1878</div><p>“Freedom is the recognition of necessity.” Absolute freedom as absolute knowledge.</p></li><li><div class="who">Ludwig Wittgenstein</div><div class="what">Tractatus Logico-Philosophicus, 1921</div><p>“The limits of my language mean the limits of my world.” Unfreedom in words.</p></li><li><div class="who">Daniel Dennett</div><div class="what">Freedom Evolves, 2003</div><p>Freedom is not yes or no but a scale: whoever sees more options is freer. “The lighting-up of nodes of options.”</p></li><li><div class="who">David Wolpert</div><div class="what">“Physical limits of inference”, 2008</div><p>Proved that a device inside the Universe cannot predict everything, including itself. That is why the demon must not be bound to reality.</p></li></ul></section>
+  </div>
+  <aside><span class="lbl">Related works</span><a href="img/ir34.jpg" target="_blank"><img src="img/ir34_s.jpg" alt="Collage" loading="lazy"></a><a href="img/ir33.jpg" target="_blank"><img src="img/ir33_s.jpg" alt="Collage" loading="lazy"></a><a href="img/p460.jpg" target="_blank"><img src="img/p460_s.jpg" alt="Plant Geometry, oil on canvas" loading="lazy"></a><a href="img/ir37.jpg" target="_blank"><img src="img/ir37_s.jpg" alt="Collage" loading="lazy"></a></aside>
+</article>
+<article id="lichnost">
+  <div>
+    <div class="meta"><b></b>4 March 2020 · note no. 10</div>
+    <h2>On Personality</h2>
+    <blockquote>Perhaps personality is not the initial, a priori stage but the final one — the one that sets the goal.</blockquote>
+    <div class="rec" data-src="audio/en-lichnost.mp3"><button class="pl" aria-label="Play"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Note</span><span class="bar"><i></i></span><span class="tm">6:27</span></div>
+    <div class="text fold"><p>Reflections on personality. I suppose I want to find some version for everything. Lacking real and reliable ways of empirical knowledge, the acceptable approach for now is enumeration: come up with a version and focus on it as an acceptable one. That is the selection I want to make for the notion of personality.</p><p>The most obvious one is personality as the sum of responses to external stimuli over the course of a life. Let us take a few thought experiments.</p><h3>DNA and the body</h3><p>Suppose personality may depend on DNA. And on physiological features that depend not only on DNA as a program but also on the real conditions of the world around us — they correct the way the program works.</p><h3>The soul</h3><p>Personality as the human soul. The soul is an integral, indivisible pattern, from a mythological point of view a substance of a personal nature. Immortal. Not bound to matter and, perhaps, to life — that is, not locked inside life as a path from the point of birth to the point of death. Something whole. That, I think, is the important notion: something whole, existing outside life as a process from birth to death.</p><p>Here I distinguish “life” in the common human sense — from birth to death — from life in my sense, where life is everything happening around as one whole process that includes everything. Simply everything.</p><p>In many religions and mythologies the soul, the spirit, is an important part of the concept. It is said to be a priori… though no, not a priori. It can be harmed. It can be black — in the sense of bad. Then it turns out that even outside the process of birth, life and death the soul can transform, acquiring or changing some qualities. On the whole, the concept of wholeness — personality, soul, a personal absolute — seems interesting. But the influence of a process that, on top of everything, is not controllable, on an absolute substance does not seem logical. So we will say goodbye to it.</p><h3>What lies underneath</h3><p>If personality is changeability, then some logic underlies the changeability. Even if the logic is not absolute but random, somewhere at the base there must be something absolute. What absolute could belong to it?</p><p>Let us limit ourselves to the human species. As a thought experiment: race, sex, lifespan and so on do not matter. What remains? Physical living conditions are extremely different — from initial data to nutrients. If we put different initial personalities into identical conditions, we get different kinds of development. Or, conversely, if we put the same personality into different initial data, we also get something.</p><p>If these are characteristics or algorithms — or both, and something else unaccounted for — then their number is most likely finite. How many can there be? Not that many, to be honest. That is why the concept of the soul seems doubtful. There are seven billion people now. Seven billion souls, then? And all of them different — fundamentally different? And that is only on Earth? And where do they go afterwards? No, I do not like it.</p><p>And yet I like the concept of the Absolute. And the concept of personality — initial entities with unique features — is very appealing. But placed into the existing reality, there are somehow too many uniquenesses. So it turns out the concept of personality has to be rejected.</p><h3>Personality as the finale</h3><p>Perhaps personality is not the initial, a priori stage but the final, concluding, goal-setting one? Then, by the way, it works out quite well. There are as many beings as you like. And there is potential — personalities do not exist yet, as it were. And all these beings have the possibility, the ability, the probability, the variability, the need to become these personalities.</p><p>Accepting this chain of reasoning, the path to personality lies in attaining certain qualities. And there are probably no ready-made masks waiting: “match me and you will be me”. Rather, certain qualities crystallise into absolute values.</p><p>Let us split the options. One where the frames already exist. And one where there are no frames, but there is a whole. An individual occupies a part of this whole. The next individual can also enter it — like an array of all the data from which the data of the already existing individual are excluded. Each takes some volume with them: one forty-eighth, one sixth, one half. Can someone fill all of it? Purely in theory, probably yes — by developing every trait of personality to the absolute. It is unclear how that is possible, but why not.</p><p>And if they are not predetermined but calculated by subtraction from the array, then with each new being the selection gets harder. And that is not quite fair: someone reaches it — and someone is already there. The same, or not the same, but also with absolute, only different, contradictory qualities. Something is off.</p><p>Then a simple version. There is a set, already divided, the qualities defined. Let us take one fundamental quality. Say there are eight. And this enumeration, enumeration — and someone has crossed over, and they are in the set. Then someone else. And the question is: what happens in this set when someone crosses over? In essence, I am talking about a process of deification.</p><p>Let us take historical figures who brought themselves to the absolute: Christ, the Buddha. Take the Buddha: he develops himself, teaches, books are written — and he disappears from the world. What is the point of it all, then? Probably he is simply written into a collection. Sitting somewhere, watching where everyone else is. Unclear. And why the whole enumeration then? Just a game? Or a search for these personalities? And what is it all for? A search for wholeness?</p><p>Oh, I got a little tangled. Interesting.</p><p class="gap">Part of the recording did not make it into the transcript.</p></div>
+    <button class="more" data-more>Read in full</button>
+    <section class="company"><h3>In good company</h3><p class="note">These parallels were found later. The notes came on their own.</p><ul><li><div class="who">George Gurdjieff</div><div class="what">in P. D. Ouspensky’s In Search of the Miraculous, 1949</div><p>A human being is not born with a soul; it can only be created through work on oneself. His word for it — “crystallisation”.</p></li><li><div class="who">Jean-Paul Sartre</div><div class="what">Existentialism Is a Humanism, 1946</div><p>“Existence precedes essence.” First you are, and who you become is not given. Personality as the finale, not the beginning.</p></li><li><div class="who">Pierre Teilhard de Chardin</div><div class="what">The Phenomenon of Man, 1955</div><p>Evolution converges on an “Omega Point” where persons gather into a whole without dissolving.</p></li><li><div class="who">Georg Hegel</div><div class="what">Phenomenology of Spirit, 1807</div><p>The Absolute comes to self-awareness through history and people. An answer to “why the whole enumeration — a search for wholeness?”.</p></li><li><div class="who">Buddhism</div><div class="what">the teaching of anattā and nirvana</div><p>Nirvana is not a place in a collection but the extinguishing of separateness. The Buddha does not occupy a share of the whole; he stops being distinct from it.</p></li></ul></section>
+  </div>
+  <aside><span class="lbl">Related works</span><a href="img/ir12.jpg" target="_blank"><img src="img/ir12_s.jpg" alt="Faces, collage" loading="lazy"></a><a href="img/ir11.jpg" target="_blank"><img src="img/ir11_s.jpg" alt="Faces, collage" loading="lazy"></a><a href="img/ir9.jpg" target="_blank"><img src="img/ir9_s.jpg" alt="Faces, collage" loading="lazy"></a><a href="img/ta1.jpg" target="_blank"><img src="img/ta1_s.jpg" alt="Faces, collage" loading="lazy"></a></aside>
+</article>
+
+<footer>Maria · notes 2020 · original in <a href="zapisi.html">Russian</a></footer>
+
+<script>
+const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+let playing = null;
+document.querySelectorAll('.rec').forEach(r => {
+  const a = new Audio();
+  a.preload = 'none';
+  const bar = r.querySelector('.bar'), fill = bar.querySelector('i'), tm = r.querySelector('.tm'), total = tm.textContent;
+  r.querySelector('.pl').onclick = () => {
+    if (!a.src) a.src = r.dataset.src;
+    if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } else a.pause();
+  };
+  a.onplay = () => r.classList.add('on');
+  a.onpause = () => r.classList.remove('on');
+  a.ontimeupdate = () => { if (a.duration) { fill.style.width = a.currentTime / a.duration * 100 + '%'; tm.textContent = fmt(a.currentTime) + ' / ' + total; } };
+  a.onended = () => { fill.style.width = '0'; tm.textContent = total; };
+  bar.onclick = e => {
+    if (!a.src) a.src = r.dataset.src;
+    const k = (e.clientX - bar.getBoundingClientRect().left) / bar.clientWidth;
+    const go = () => { a.currentTime = k * a.duration; if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } };
+    if (a.duration) go();
+    else { a.addEventListener('loadedmetadata', go, {once: true}); a.load(); }
+  };
+});
+document.querySelectorAll('[data-more]').forEach(b => b.onclick = () => { b.previousElementSibling.classList.remove('fold'); b.remove(); });
+</script>
+</body>
+</html>
