@@ -241,14 +241,19 @@ canvas.dim{filter:blur(2px) brightness(.5)}
     {t: 'О пространстве', q: 'Материи не существует. Существует информация о материи, записанная в пространстве.', src: 'audio/prostranstvo.m4a', id: 'prostranstvo', arm: 0},
     {t: 'Идея свободы — ложная идея', q: 'Абсолютная свобода должна подразумевать абсолютное знание.', src: 'audio/svoboda.m4a', id: 'svoboda', arm: 1},
     {t: 'О личности', q: 'Может быть, личность — не начальный, априорный этап, а финальный.', src: 'audio/lichnost.m4a', id: 'lichnost', arm: 2},
-  ].map(v => ({...v, voice: true, r: .07, x: 0, y: 0}));
+    {t: 'Танец', q: 'Ты начинай — партнер-пространство поведет.', src: 'audio/stihi-tanec.mp3', href: 'stihi.html#s1', yr: 'стихи, 2014', arm: 0, r: .34},
+    {t: '***', q: 'Стоять ногами у себя на голове.', src: 'audio/stihi-zvezdy.mp3', href: 'stihi.html#s2', yr: 'стихи, 2011', arm: 1, r: .42},
+    {t: 'Блоги пали', q: 'Блоги пали, туманы бали, пытаясь прозреть.', src: 'audio/stihi-blogi.mp3', href: 'stihi.html#s3', yr: 'стихи, 2022', arm: 2, r: .3},
+    {t: 'Голос в голове', q: 'Я в голове слышу голос. И он называется Богом.', src: 'audio/stihi-golos.mp3', href: 'stihi.html#s4', yr: 'стихи, 2014', arm: 0, r: .58},
+    {t: 'Хаму в очереди', q: 'Душой вы обрасти забыли.', src: 'audio/stihi-hamu.mp3', href: 'stihi.html#s5', yr: 'стихи, 2014', arm: 2, r: .52},
+  ].map(v => ({r: .07, ...v, voice: true, x: 0, y: 0}));
   const voiceBox = document.getElementById('voice');
   let playing = null, audio = null;
   function voiceLabel(v, play) {
     if (!v) { if (!playing) voiceBox.classList.remove('show'); return; }
     voiceBox.querySelector('b').textContent = v.t;
     voiceBox.querySelector('span').textContent = v.q;
-    voiceBox.querySelector('small').innerHTML = play ? 'голос, 2020 · <a href="zapisi.html#' + v.id + '">читать</a> · нажми на кольцо ещё раз, чтобы остановить' : 'запись 2020 · нажми, чтобы услышать голос';
+    voiceBox.querySelector('small').innerHTML = play ? (v.yr || 'голос, 2020') + ' · <a href="' + (v.href || 'zapisi.html#' + v.id) + '">читать</a> · нажми на кольцо ещё раз, чтобы остановить' : (v.yr || 'запись 2020') + ' · нажми, чтобы услышать голос';
     voiceBox.classList.add('show'); voiceBox.classList.toggle('play', !!play);
   }
   function playVoice(v) {

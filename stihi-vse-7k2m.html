@@ -41,6 +41,16 @@ article h2{font:500 clamp(40px,5vw,64px)/1 var(--serif);letter-spacing:-.01em;ma
 .poem{font:500 clamp(21px,2vw,26px)/1.45 var(--serif)}
 .poem p{margin-bottom:1.1em}
 .poem span{display:block;padding-left:1em;text-indent:-1em}
+.rec{display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;background:var(--card);border:1px solid var(--line);border-radius:999px;margin-bottom:32px;max-width:520px}
+.rec .pl{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center}
+.rec .pl svg{width:16px;height:16px;fill:currentColor}
+.rec .pl .pa{display:none}
+.rec.on .pl .pa{display:block}
+.rec.on .pl .pp{display:none}
+.rec .tl{font-size:13px;font-weight:500;white-space:nowrap}
+.rec .bar{flex:1;height:3px;background:var(--line);border-radius:2px;position:relative;cursor:pointer;min-width:60px}
+.rec .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--dot);border-radius:2px;width:0}
+.rec .tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 
 footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
 
@@ -49,6 +59,7 @@ footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1p
   .hero{grid-template-columns:1fr;gap:32px;padding:44px 16px 0}
   .toc{padding:0 16px;margin-top:40px}
   article{padding:64px 16px 0}
+  .rec{max-width:none}
   footer{padding:28px 16px 40px;margin-top:80px}
 }
 </style>
@@ -78,51 +89,84 @@ footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1p
 <article id="s1">
   <div class="meta"><b></b>2022 · гражданская лирика</div>
   <h2>Буревестник</h2>
+  
   <div class="poem"><p><span>Я боюсь за мир</span><span>Я борюсь за мир</span><span>В этом мире бурь</span><span>Буревестникам дурь</span><span>_______</span><span>Вдоха — Инна Медведун</span></p></div>
 </article>
 
 <article id="s2">
   <div class="meta"><b></b>2022 · иронические стихи</div>
   <h2>Блоги пали</h2>
+  <div class="rec" data-src="audio/stihi-blogi.mp3"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Читает автор</span><span class="bar"><i></i></span><span class="tm">0:18</span></div>
   <div class="poem"><p><span>Блоги пали.</span><span>Облагъ попрали…</span><span>О боги, правы ли вы?!</span></p><p><span>Парили ли вы в далях,</span><span>Дарили ли палевый цвет,</span><span>Плевав на контраст?</span></p><p><span>Поспев подпитать,</span><span>Подсчет подгадать —</span><span>Лазоревый цвет.</span></p><p><span>Блоги пали, туманы</span><span>Бали</span><span>Пытаясь прозреть.</span></p></div>
 </article>
 
 <article id="s3">
   <div class="meta"><b></b>2014 · мистика и эзотерика</div>
   <h2>Танец</h2>
+  <div class="rec" data-src="audio/stihi-tanec.mp3"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Читает автор</span><span class="bar"><i></i></span><span class="tm">0:34</span></div>
   <div class="poem"><p><span>Что танец для вас – перебор положений?</span><span>А вон для той – брачный контракт?</span><span>А для меня это сила сосредоточенья</span><span>Упругий и мощный заряд.</span></p><p><span>Закрой глаза, вообрази сплетенье судеб</span><span>И ощути, что под ногами то же вещество</span><span>Которым ты и есть и был.</span><span>Податливость его почувствуй.</span></p><p><span>Вокруг тебя материя упруга,</span><span>Пружинит физикой и откликается</span><span>Движенью. Ты начинай</span><span>Партнер-пространство поведет.</span></p><p><span>А если ты добавишь мысли</span><span>Рискуешь получить стучанье сердца</span><span>Бег энергий и голос из пространства</span><span>«Здравствуй!».</span></p></div>
 </article>
 
 <article id="s4">
   <div class="meta"><b></b>2014 · религиозная лирика</div>
   <h2>Голос в голове</h2>
+  <div class="rec" data-src="audio/stihi-golos.mp3"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Читает автор</span><span class="bar"><i></i></span><span class="tm">0:57</span></div>
   <div class="poem"><p><span>Так странно – боялась признаться</span><span>Но вам, я чувствую, можно</span><span>Я в голове слышу голос.</span><span>И он называется Богом.</span></p><p><span>Гнала его и сторонилася</span><span>А он знай, тихонько плачет,</span><span>Но больше всего он любит ругаться</span><span>Матом благим и генеральским голосом.</span></p><p><span>Рассказывает мне о том, как надо,</span><span>Что жизнь есть - для всех единая.</span><span>Нашептывает мне истины разные,</span><span>И сказки рассказывает длинные.</span></p><p><span>Говорит, деньги - придуманы,</span><span>Мерой вещей быть им рано еще.</span><span>Любовью зовет терпение,</span><span>И ругает нас за страдание.</span></p><p><span>Поет мне голосом ангельским</span><span>И мурашками покрывает конечности.</span><span>Вы сами могли бы быть вечностью,</span><span>Да закралась пи в мироздание.</span></p><p><span>Он просит меня не плакать,</span><span>Он просит меня чувствовать.</span><span>У него нет ответов на мои вопросы,</span><span>Но просит меня участвовать.</span></p><p><span>Говорит без меня здесь холодно,</span><span>Говорит, потерпеть осталось немножечко,</span><span>Просит спать и терпеть и чувствовать.</span><span>И ему отказать невозможно.</span></p></div>
 </article>
 
 <article id="s5">
   <div class="meta"><b></b>2014 · мистика и эзотерика</div>
   <h2>Хаму в очереди</h2>
+  <div class="rec" data-src="audio/stihi-hamu.mp3"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Читает автор</span><span class="bar"><i></i></span><span class="tm">0:29</span></div>
   <div class="poem"><p><span>Когда меня тащило в горы</span><span>И сила поднимала над землей</span><span>Я словно телевизор всех вас слышу</span><span>Но самоё затмили вы собой</span></p><p><span>Там тишина! И звуки мирозданья</span><span>Но тянете обратно вы меня</span><span>О, дети, злые дети,</span><span>Зачем вам?..</span></p><p><span>Стремитесь вы к тому</span><span>чего бежать вам след,</span><span>Не сдюжите</span><span>иль станете другими.</span></p><p><span>Себя вы так боитесь потерять</span><span>Наивно забывая</span><span>Что суть вы – перебор</span><span>Параметров константных</span></p><p><span>Душой вы обрасти забыли.</span></p></div>
 </article>
 
 <article id="s6">
   <div class="meta"><b></b>2014 · любовная лирика</div>
   <h2>О том, что было</h2>
+  
   <div class="poem"><p><span>О том, что было вспоминать не стану</span><span>Не хочу я!</span><span>Я жизнь свою перевернула на 120.</span></p><p><span>Какого же, ты, друг мой старый,</span><span>Снишься?!</span><span>Пугаешь, заставляешь просыпаться?</span></p><p><span>Я знаю: ты там был.</span><span>Играл и развлекался.</span><span>Прошу не забывай: я умерла!</span></p><p><span>Теперь другая, и прошу не приближаться.</span></p></div>
 </article>
 
 <article id="s7">
   <div class="meta"><b></b>2014 · гражданская лирика</div>
   <h2>России</h2>
+  
   <div class="poem"><p><span>Страну рассмотреть как живой организм – посмею</span><span>Чтобы понять, что лучше и как поступить</span><span>Чтоб пожалеть, полюбить и совет дать – умелый</span><span>Подругу увидеть и человека в ней.</span></p><p><span>Сказать ей могу: дорогуша – воспрянешь!</span><span>Ведь ты взрослеешь и набираешься сил</span><span>Ты есть в этом мире: и с этим уже не поспоришь,</span><span>А нравиться всем – никто никого не просил.</span></p><p><span>Ты помни, родная – мораль существует</span><span>Не в ней быстротечность, что ныне модна</span><span>Ответ же ты держишь перед Историей</span><span>Ты будешь и есть и всегда – была.</span></p></div>
 </article>
 
 <article id="s8">
   <div class="meta"><b></b>2014 · белый и вольный стих</div>
   <h2>***</h2>
+  <div class="rec" data-src="audio/stihi-zvezdy.mp3"><button class="pl" aria-label="Слушать"><svg class="pp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><span class="tl">Читает автор</span><span class="bar"><i></i></span><span class="tm">0:42</span></div>
   <div class="poem"><p><span>Считаю честным сообщить,</span><span>Что не найдя опору под ногами,</span><span>Наличие которых, впрочем, под вопросом,</span><span>Опору всё же нужно отыскать.</span><span>И - важно - чтобы было в материальном виде</span><span>Отображеньем чаяний и мечт.</span><span>Которые смешны вовне и так волнуют дух</span><span>При том условии, конечно,</span><span>Что дух как таковой бытует в этом мире.</span><span>И видится таким естественным:</span><span>Стоять ногами у себя на голове,</span><span>Но в силу алогичности сознания</span><span>Выстраиваемся друг для друга в цепи,</span><span>Где чтоб пожать тому кто рядом руку</span><span>О стену стукнуться придётся головой.</span><span>Чтобы сказать и знать что ты услышан:</span><span>Закрыв глаза сцепить ресницы больно,</span><span>Расправив руки полететь навстречу полу-потолку.</span><span>2011</span></p></div>
 </article>
 
 <footer>Мария · стихи</footer>
+
+<script>
+const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+let playing = null;
+document.querySelectorAll('.rec').forEach(r => {
+  const a = new Audio();
+  a.preload = 'none';
+  const bar = r.querySelector('.bar'), fill = bar.querySelector('i'), tm = r.querySelector('.tm'), total = tm.textContent;
+  r.querySelector('.pl').onclick = () => {
+    if (!a.src) a.src = r.dataset.src;
+    if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } else a.pause();
+  };
+  a.onplay = () => r.classList.add('on');
+  a.onpause = () => r.classList.remove('on');
+  a.ontimeupdate = () => { if (a.duration) { fill.style.width = a.currentTime / a.duration * 100 + '%'; tm.textContent = fmt(a.currentTime) + ' / ' + total; } };
+  a.onended = () => { fill.style.width = '0'; tm.textContent = total; };
+  bar.onclick = e => {
+    if (!a.src) a.src = r.dataset.src;
+    const k = (e.clientX - bar.getBoundingClientRect().left) / bar.clientWidth;
+    const go = () => { a.currentTime = k * a.duration; if (a.paused) { if (playing && playing !== a) playing.pause(); a.play(); playing = a; } };
+    if (a.duration) go();
+    else { a.addEventListener('loadedmetadata', go, {once: true}); a.load(); }
+  };
+});
+</script>
 </body>
 </html>
