@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мария — учёба</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f0ea;--ink:#1c1a17;--muted:#7a746b;--line:#dcd6cc;--dot:#e0402f;--card:#fbf9f5;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{max-width:1240px;margin:0 auto;padding:28px 48px 0;font-size:13px}
+.top a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.top a:hover{color:var(--ink)}
+.top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hero{max-width:1240px;margin:0 auto;padding:72px 48px 0}
+.hero h1{font:500 clamp(52px,8vw,112px)/.92 var(--serif);letter-spacing:-.02em;text-wrap:balance}
+.hero h1 i{width:.15em;height:.15em;border-radius:50%;background:var(--dot);display:inline-block;margin-left:.06em}
+.hero p{max-width:58ch;color:var(--muted);margin-top:22px;text-wrap:pretty}
+.list{max-width:1240px;margin:56px auto 0;padding:0 48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;gap:10px;padding:24px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .3s}
+.card:hover{border-color:var(--ink)}
+.card .meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card h2{font:500 30px/1.05 var(--serif);text-wrap:balance}
+.card p{color:var(--muted);font-size:14px;text-wrap:pretty}
+.card .more{margin-top:auto;font-size:13px;font-weight:500}
+.age{font:600 11px/1 var(--sans);letter-spacing:0;padding:4px 6px;border:1px solid currentColor;border-radius:4px}
+.age.a18{color:var(--dot)}
+footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.read{max-width:816px;margin:0 auto;padding:0 48px}
+.read .toc{margin:40px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.read .toc a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;text-decoration:none;color:var(--muted)}
+.read .toc a:hover{color:var(--ink);background:var(--card)}
+.read h2{font:500 36px/1.1 var(--serif);margin:80px 0 28px}
+.read .txt p{font:400 20px/1.6 var(--serif);margin-bottom:.9em;text-wrap:pretty}
+.gate{position:fixed;inset:0;z-index:9;background:var(--bg);display:none;place-items:center;padding:24px;text-align:center}
+.gate.on{display:grid}
+.gate b{font:500 64px/1 var(--serif);color:var(--dot)}
+.gate p{max-width:40ch;margin:18px auto 26px;color:var(--muted)}
+.gate button{font:600 14px var(--sans);padding:12px 22px;border-radius:999px;border:0;background:var(--ink);color:var(--bg);cursor:pointer;margin:0 6px 10px}
+.gate button+button{background:none;color:var(--ink);border:1px solid var(--line)}
+@media (max-width:900px){
+  .top{padding:20px 16px 0}.hero{padding:44px 16px 0}
+  .list{grid-template-columns:1fr;padding:0 16px;margin-top:40px}
+  .read{padding:0 16px}.read .txt p{font-size:18px}
+  footer{padding:28px 16px 40px;margin-top:80px}
+}
+@media (min-width:901px){.list.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:901px) and (max-width:1100px){.list.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hero.narrow{max-width:816px}
+</style>
+</head>
+<body>
+
+<div class="top"><a href="teksty.html"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Тексты</a></div>
+<header class="hero"><h1>Учёба<i></i></h1><p>Магистратура Национального института дизайна, кафедра графического дизайна, 2014–2016: как страна выглядит в знаках — гербы, флаги, туристические логотипы.</p></header>
+<section class="list four"><a class="card" href="teksty/ucheba/Магистерская диссертация_2016_Голубкова.pdf" target="_blank"><div class="meta">2016</div><h2>Магистерская диссертация</h2><p>Государственная символика и туристический логотип страны как объекты графического дизайна. Национальный институт дизайна, кафедра графического дизайна.</p><span class="more">PDF, 102 стр.</span></a><a class="card" href="teksty/ucheba/Автореферат магистерская_2016_Голубкова.pdf" target="_blank"><div class="meta">2016</div><h2>Автореферат</h2><p>Коротко о той же диссертации.</p><span class="more">PDF, 17 стр.</span></a><a class="card" href="teksty/ucheba/Презентация защита_июнь 2016_Голубкова.pdf" target="_blank"><div class="meta">2016</div><h2>Презентация к защите</h2><p>Государственная символика и туристический логотип страны.</p><span class="more">PDF, 27 слайдов</span></a><a class="card" href="teksty/ucheba/Презентация ректорский просмотр_2016_Голубкова.pdf" target="_blank"><div class="meta">2016</div><h2>Ректорский просмотр</h2><p>Система визуальной идентификации страны на примере Российской Федерации.</p><span class="more">PDF, 22 слайда</span></a><a class="card" href="teksty/ucheba/БД изображений как дизайнерский инструмент_2016_Голубкова.docx" target="_blank"><div class="meta">2016</div><h2>База данных изображений как дизайнерский инструмент</h2><p>Статья: как систематизировать гербы, флаги и логотипы стран для исследования.</p><span class="more">Word</span></a><a class="card" href="teksty/ucheba/Презентация БД_2016_Голубкова.pdf" target="_blank"><div class="meta">2016</div><h2>База данных изображений — презентация</h2><p>К той же статье.</p><span class="more">PDF, 10 слайдов</span></a><a class="card" href="teksty/ucheba/О проектности геральдики РСФСР_2015_Голубкова.docx" target="_blank"><div class="meta">2015</div><h2>О проектности геральдики РСФСР</h2><p>Статья: проектный подход к гербам РСФСР и СССР и что из него следует для символа современной России.</p><span class="more">Word</span></a><a class="card" href="teksty/ucheba/Презентация выбор темы_2014_Голубкова.pdf" target="_blank"><div class="meta">2014</div><h2>Бренд страны и его визуальная составляющая</h2><p>Презентация к выбору темы магистерской.</p><span class="more">PDF, 17 слайдов</span></a></section>
+<footer>Мария · учёба</footer>
+</body>
+</html>

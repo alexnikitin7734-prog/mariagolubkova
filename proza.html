@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Мария — проза</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f0ea;--ink:#1c1a17;--muted:#7a746b;--line:#dcd6cc;--dot:#e0402f;--card:#fbf9f5;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{max-width:1240px;margin:0 auto;padding:28px 48px 0;font-size:13px}
+.top a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.top a:hover{color:var(--ink)}
+.top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hero{max-width:1240px;margin:0 auto;padding:72px 48px 0}
+.hero h1{font:500 clamp(52px,8vw,112px)/.92 var(--serif);letter-spacing:-.02em;text-wrap:balance}
+.hero h1 i{width:.15em;height:.15em;border-radius:50%;background:var(--dot);display:inline-block;margin-left:.06em}
+.hero p{max-width:58ch;color:var(--muted);margin-top:22px;text-wrap:pretty}
+.list{max-width:1240px;margin:56px auto 0;padding:0 48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;gap:10px;padding:24px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .3s}
+.card:hover{border-color:var(--ink)}
+.card .meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card h2{font:500 30px/1.05 var(--serif);text-wrap:balance}
+.card p{color:var(--muted);font-size:14px;text-wrap:pretty}
+.card .more{margin-top:auto;font-size:13px;font-weight:500}
+.age{font:600 11px/1 var(--sans);letter-spacing:0;padding:4px 6px;border:1px solid currentColor;border-radius:4px}
+.age.a18{color:var(--dot)}
+footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.read{max-width:816px;margin:0 auto;padding:0 48px}
+.read .toc{margin:40px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.read .toc a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;text-decoration:none;color:var(--muted)}
+.read .toc a:hover{color:var(--ink);background:var(--card)}
+.read h2{font:500 36px/1.1 var(--serif);margin:80px 0 28px}
+.read .txt p{font:400 20px/1.6 var(--serif);margin-bottom:.9em;text-wrap:pretty}
+.gate{position:fixed;inset:0;z-index:9;background:var(--bg);display:none;place-items:center;padding:24px;text-align:center}
+.gate.on{display:grid}
+.gate b{font:500 64px/1 var(--serif);color:var(--dot)}
+.gate p{max-width:40ch;margin:18px auto 26px;color:var(--muted)}
+.gate button{font:600 14px var(--sans);padding:12px 22px;border-radius:999px;border:0;background:var(--ink);color:var(--bg);cursor:pointer;margin:0 6px 10px}
+.gate button+button{background:none;color:var(--ink);border:1px solid var(--line)}
+@media (max-width:900px){
+  .top{padding:20px 16px 0}.hero{padding:44px 16px 0}
+  .list{grid-template-columns:1fr;padding:0 16px;margin-top:40px}
+  .read{padding:0 16px}.read .txt p{font-size:18px}
+  footer{padding:28px 16px 40px;margin-top:80px}
+}
+@media (min-width:901px){.list.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:901px) and (max-width:1100px){.list.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hero.narrow{max-width:816px}
+</style>
+</head>
+<body>
+<div class="gate" id="gate"><div><b>18+</b><p>Здесь есть тексты для взрослых. Продолжая, вы подтверждаете, что вам исполнилось 18 лет.</p><button id="ok18">Мне есть 18</button><button onclick="location.href='teksty.html'">Уйти</button></div></div>
+<script>
+(function(){var g=document.getElementById('gate'),k='age18';var ok=false;try{ok=localStorage.getItem(k)==='1'}catch(e){}
+if(!ok)g.classList.add('on');document.getElementById('ok18').onclick=function(){try{localStorage.setItem(k,'1')}catch(e){}g.classList.remove('on')}})();
+</script>
+<div class="top"><a href="teksty.html"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Тексты</a></div>
+<header class="hero"><h1>Проза<i></i></h1><p>Фанфики по «Гарри Поттеру», «Каслу» и «Унесённым ветром» и свои истории, 2020–2022. Часть текстов для взрослых, они отмечены 18+.</p></header>
+<section class="list"><a class="card" href="proza/175682.html"><div class="meta">2022 · Унесённые ветром <span class="age a18">18+</span></div><h2>Всё просто</h2><p>Вечер после того, как Скарлетт приходила к Ретту в тюрьму.</p><span class="more">PWP · Мини</span></a><a class="card" href="proza/165304.html"><div class="meta">2022 · Гарри Поттер <span class="age">12+</span></div><h2>Нуарный фанфик</h2><p>В этом сыром сером городе ни у кого нет права на светлое искрящееся счастье.</p><span class="more">Драма, Пародия, AU · Миди</span></a><a class="card" href="proza/165335.html"><div class="meta">2022 · Касл <span class="age">12+</span></div><h2>Дом Ужаса</h2><p>Есть кровь, но нет тела. Ричард Касл и детектив Кейт Беккет отправляются в Дом Ужаса, чтобы разобраться с делом.</p><span class="more">Детектив · Миди</span></a><a class="card" href="proza/173659.html"><div class="meta">2022 · Касл <span class="age a18">18+</span></div><h2>Маленькая традиция</h2><p>Когда хочется, чтобы большое началось с малого. И побыстрее.</p><span class="more">PWP · Мини</span></a><a class="card" href="proza/165337.html"><div class="meta">2022 · Ориджиналы <span class="age">12+</span></div><h2>Преобразование</h2><p>Обычное утро обычного дня всегда может оказаться последним.</p><span class="more">Триллер · Мини</span></a><a class="card" href="proza/166519.html"><div class="meta">2021 · Гарри Поттер <span class="age a18">18+</span></div><h2>Соглашение</h2><p>Он обернулся — она подтянула ноги и устроилась на неразобранной постели калачиком, положив ладошки под щеку. — Спой мне колыбельную. Драко усмехнулся. — Это вряд ли. Спи, Грейнджер.</p><span class="more">Романтика, Юмор, Hurt/comfort · Макси</span></a><a class="card" href="proza/159568.html"><div class="meta">2021 · Ориджиналы <span class="age a18">18+</span></div><h2>Тропою сердца</h2><p>На конкурс «Мсье 2: Кинк эдишн. Второй тур», номинация «Пестики и тычинки». Кинки: 15. Аукционы (спасение путём покупки). 91. Мокрая одежда, облепляющая тело. Ключ: Остров. Вы соскучились по классическим любовным романам? В вашем организме острая нехватка закатов, пиратов и барышень в беде? Их есть у нас!</p><span class="more">Пародия, Романтика, Исторический · Мини</span></a><a class="card" href="proza/159915.html"><div class="meta">2021 · Гарри Поттер <span class="age a18">18+</span></div><h2>Проклятие</h2><p>На конкурс «Мсье 2: Кинк эдишн. Второй тур», номинация «Полёты на метле» Кинки: 28. Воздержание (чьё-либо воздержание вызывает желание соблазнить). 190. Эротические сны, оргазм во сне. Ключ: After all of that, how is it possible We&#x27;re strangers again? Иногда случай способен заставить тебя сделать то, чего ты не мог себе вообразить даже в самой странной фантазии.</p><span class="more">Мистика, Hurt/comfort · Мини</span></a><a class="card" href="proza/159960.html"><div class="meta">2021 · Гарри Поттер <span class="age">6+</span></div><h2>Вылупляемость</h2><p>На конкурс «Усы, лапы и хвост», номинация «Гарри Коттер». Садитесь в кружок (да потеснее!) — расскажу вам сказку быль-небыль волшебную. В ней будут зверушки разномастные, девочка волшебница-затейница, да котейка рыжий пронырливый.</p><span class="more">Сказка · Мини</span></a><a class="card" href="proza/158625.html"><div class="meta">2021 · Ориджиналы <span class="age a18">18+</span></div><h2>Они</h2><p>Она хотела абсолютной любви. На конкурс «Мсье 2: Кинк эдишн. Первый тур», номинация «Пестики и тычинки: NC-17». Кинки: 22. Бесконтактный секс (удовольствие без стимуляции физического тела); 101. Объектофилия (романтическое или сексуальное влечение к неодушевлённым предметам); 134. Связи (телепатические и эмпатические); 151. Секс стоя у стены.</p><span class="more">Романтика · Мини</span></a><a class="card" href="proza/156751.html"><div class="meta">2020 · Гарри Поттер <span class="age a18">18+</span></div><h2>Шибари</h2><p>Драко и Гермиона должны найти загадочного маньяка, похищающего и убивающего магл-проституток. Им предстоит захватывающее расследование и трудное противостояние преступному гению-психопату.</p><span class="more">Детектив, Триллер · Макси</span></a><a class="card" href="proza/156148.html"><div class="meta">2020 · Гарри Поттер <span class="age a18">18+</span></div><h2>Грешный шлюший наряд</h2><p>Несколько дней работы детективного агентства «Протего Ма́ксима», которые сильно повлияют на Драко.</p><span class="more">Романтика, Детектив · Миди</span></a><a class="card" href="proza/154090.html"><div class="meta">2020 · Гарри Поттер <span class="age">12+</span></div><h2>Пушишки</h2><p>Первое расследование детективного агентства «Протего Ма́ксима». Драко и Гермиона берутся помочь милой пожилой женщине. Они должны выяснить, что же случилось с её питомцами.</p><span class="more">Детектив · Миди</span></a><a class="card" href="proza/155880.html"><div class="meta">2020 · Гарри Поттер <span class="age">16+</span></div><h2>Когда духи хотят уйти</h2><p>В канун Дня Всех Святых Гермионе и Драко предстоит найти пропавший призрак.</p><span class="more">Детектив · Миди</span></a><a class="card" href="proza/153503.html"><div class="meta">2020 · Гарри Поттер <span class="age">12+</span></div><h2>Детективное агентство «Протего Ма́ксима»</h2><p>О том, как создавалось детективное агентство Драко Малфоя и Гермионы Грейнджер «Протего Ма́ксима».</p><span class="more">Детектив · Миди</span></a></section>
+<footer>Мария · проза</footer>
+</body>
+</html>
