@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Преобразование — Мария</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -52,6 +54,31 @@ footer{max-width:1240px;margin:120px auto 0;padding:32px 48px 48px;border-top:1p
 @media (min-width:901px){.list.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:901px) and (max-width:1100px){.list.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .hero.narrow{max-width:816px}
+.sh{max-width:1240px;margin:72px auto 0;padding:0 48px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.sh h2{font:500 40px/1.05 var(--serif)}
+.sh span{color:var(--muted);font-size:14px}
+.season{max-width:1240px;margin:28px auto 0;padding:0 48px;list-style:none}
+.season li:first-child a{border-top:1px solid var(--line)}
+.season a{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.4fr) auto;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s}
+.season a:hover{background:var(--card)}
+.season b{font:500 44px/1 var(--serif);color:var(--dot)}
+.season h3{font:500 28px/1.1 var(--serif);text-wrap:balance}
+.season p{color:var(--muted);font-size:14px;text-wrap:pretty}
+.season .meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center;white-space:nowrap}
+.list.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.list.after{margin-top:28px}
+.part{max-width:816px;margin:20px auto 0;padding:0 48px;font-size:14px;color:var(--muted)}
+.part a{color:var(--ink)}
+.pn{display:flex;justify-content:space-between;gap:16px;margin-top:80px;padding-top:24px;border-top:1px solid var(--line)}
+.pn a{text-decoration:none;font:500 22px/1.2 var(--serif);color:var(--ink)}
+.pn a span{display:block;font:400 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.pn a+a{text-align:right;margin-left:auto}
+@media (max-width:900px){
+  .sh,.season,.part{padding:0 16px}.sh{margin-top:48px}.sh h2{font-size:32px}
+  .season a{grid-template-columns:44px minmax(0,1fr);gap:6px 14px}
+  .season b{font-size:32px;grid-row:span 3}
+  .list.two{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
