@@ -50,10 +50,17 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:crossh
 .voice span{display:block;font:italic 500 17px/1.35 'Cormorant Garamond',serif;color:#b9b2a5;margin-top:6px}
 .voice small{display:block;font-size:12px;color:var(--muted);margin-top:8px}
 .voice a{color:var(--muted)}
+.pause{position:fixed;right:84px;bottom:28px;z-index:6;height:44px;padding:0 18px 0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(10,10,16,.5);color:var(--muted);display:inline-flex;align-items:center;gap:9px;font:500 13px 'Manrope',sans-serif;letter-spacing:.02em;cursor:pointer;transition:color .2s,border-color .6s}
+.pause:hover{color:var(--ink)}
+.pause i{width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.pause.on{color:var(--ink);border-color:rgba(224,64,47,.4)}
+.breath{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;pointer-events:none;font:italic 500 clamp(28px,4vw,44px)/1 'Cormorant Garamond',serif;color:var(--ink);opacity:0;transition:opacity 1.2s ease;text-shadow:0 0 30px rgba(5,5,10,.9)}
+.breath.show{opacity:.75}
 canvas{transition:filter .7s ease}
 canvas.dim{filter:blur(2px) brightness(.5)}
 @media (max-width:760px){
   .snd{right:16px;bottom:20px}
+  .pause{right:70px;bottom:20px}
   .voice{bottom:96px}
   .title{left:16px;bottom:20px}
   .title h1{font-size:32px}
@@ -67,6 +74,8 @@ canvas.dim{filter:blur(2px) brightness(.5)}
 <div class="title"><h1>Туманность<i></i></h1><p id="hint">Наведи на точку и задержись. Красные кольца — голос</p></div>
 <div class="gate" id="gate"><h1>Туманность<i></i></h1><p>Лучше в наушниках и в темноте. Музыка рождается прямо здесь, каждый раз немного другая.</p><div class="row"><button id="enter">Войти</button><button id="silent" class="ghost">Без звука</button></div></div>
 <button class="snd" id="snd" aria-label="Звук"><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg></button>
+<button class="pause" id="pause"><i></i>Пауза</button>
+<div class="breath" id="breath"></div>
 <div class="voice" id="voice"><b></b><span></span><small></small></div>
 <figure class="zoom" id="zoom"><img id="zimg" alt=""><figcaption id="zcap"></figcaption></figure>
 <script>
@@ -161,6 +170,7 @@ canvas.dim{filter:blur(2px) brightness(.5)}
         if (up) bell(PENTA[2 + Math.floor(Math.random() * 5)], .08, 0, t + .55);
       },
       duck(v) { if (ac) { padGain.gain.cancelScheduledValues(ac.currentTime); padGain.gain.linearRampToValueAtTime(v ? .14 : .5, ac.currentTime + 1.2); } },
+      hush(v) { if (ac && !muted) { master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(v ? .16 : .6, ac.currentTime + 2.5); } },
       suspend(x) { if (ac) x ? ac.suspend() : ac.resume(); },
     };
   })();
@@ -232,9 +242,10 @@ canvas.dim{filter:blur(2px) brightness(.5)}
   }
   resize(); addEventListener('resize', resize);
 
+  let bk = 0;
   const pos = (arm, r, off, rot) => {
     const ang = arm * 2 * Math.PI / ARMS + r * TW * Math.PI + off + rot / (0.35 + r);
-    const rr = r * R * cam, d = .3 + r;
+    const rr = r * R * cam * (1 + .1 * bk), d = .3 + r;
     return [cx + px * d + Math.cos(ang) * rr, cy + py * d + Math.sin(ang) * rr * .62];
   };
 
@@ -265,11 +276,35 @@ canvas.dim{filter:blur(2px) brightness(.5)}
     audio.onended = () => { playing = null; Snd.duck(false); voiceLabel(null); };
     Snd.duck(true); voiceLabel(v, true);
   }
+  const pauseBtn = document.getElementById('pause'), breathBox = document.getElementById('breath');
+  const IN = 4000, HOLD = 2000, OUT = 6000, CYC = IN + HOLD + OUT, TIMES = 3;
+  let br0 = null, word = '';
+  function say(w) { if (w === word) return; word = w; breathBox.classList.remove('show'); if (w) setTimeout(() => { if (word === w) { breathBox.textContent = w; breathBox.classList.add('show'); } }, 250); }
+  function breathe(now) {
+    if (br0 === null) return 0;
+    const t = performance.now() - br0;
+    if (t >= CYC * TIMES) { stopPause(); return 0; }
+    const c = t % CYC;
+    pauseBtn.querySelector('i').style.transform = 'scale(' + (1 + 1.2 * bk) + ')';
+    if (c < IN) { say('вдох'); return .5 - .5 * Math.cos(Math.PI * c / IN); }
+    if (c < IN + HOLD) { say('задержи'); return 1; }
+    say('выдох'); return .5 + .5 * Math.cos(Math.PI * (c - IN - HOLD) / OUT);
+  }
+  function startPause() {
+    if (opened) close();
+    if (playing) playVoice(playing);
+    br0 = performance.now(); pauseBtn.classList.add('on'); Snd.hush(true);
+  }
+  function stopPause() {
+    br0 = null; pauseBtn.classList.remove('on'); pauseBtn.querySelector('i').style.transform = ''; say(''); Snd.hush(false);
+  }
+  pauseBtn.onclick = () => br0 === null ? startPause() : stopPause();
   const shooting = [];
   let rot = 0, speed = 1, target = 1, last = performance.now(), hover = null, hoverT = 0, opened = null, mx = -1e4, my = -1e4;
   function frame(now) {
     const dt = Math.min(50, now - last); last = now;
-    speed += (target - speed) * .06;
+    bk = breathe(now);
+    speed += ((br0 === null ? target : .25) - speed) * .06;
     if (introT !== null) { const t = Math.min(1, (now - introT) / 4200); cam = .02 + .98 * (1 - Math.pow(1 - t, 3)); }
     rot += dt * .000028 * speed + dt * .0011 * (1 - cam);
     const tx = mx > -1e3 && !opened ? (mx - W / 2) * -.03 : 0, ty = my > -1e3 && !opened ? (my - H / 2) * -.03 : 0;
@@ -277,25 +312,27 @@ canvas.dim{filter:blur(2px) brightness(.5)}
     ctx.fillStyle = '#05050a'; ctx.fillRect(0, 0, W, H);
     ctx.globalAlpha = .25 + .75 * cam;
     ctx.drawImage(neb, px * .4 - 20, py * .4 - 20, W + 40, H + 40);
-    ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = 'lighter';
+    if (bk > 0) { ctx.globalAlpha = .55 * bk; ctx.drawImage(neb, px * .4 - 20, py * .4 - 20, W + 40, H + 40); }
+    ctx.globalAlpha = 1;
     for (const p of dust) {
       let x, y;
       if (p.free) { x = p.fx * W + px * 1.6; y = p.fy * H + py * 1.6; } else [x, y] = pos(p.arm, p.r, p.off, rot);
-      const a = p.a * (.7 + .3 * Math.sin(now * .001 + p.ph));
+      const a = p.a * (.7 + .3 * Math.sin(now * .001 + p.ph)) * (1 + .9 * bk);
       ctx.fillStyle = `rgba(220,215,235,${a})`;
       ctx.fillRect(x, y, p.s, p.s);
     }
     for (const s of stars) {
       [s.x, s.y] = pos(s.arm, s.r, s.off, rot);
-      const tw = .75 + .25 * Math.sin(now * .0016 + s.ph);
+      const tw = (.75 + .25 * Math.sin(now * .0016 + s.ph)) * (1 + .35 * bk);
       const on = s === hover || s === opened;
       const sz = s.size * (on ? 2.2 : 1);
       const [r, g, b] = s.col;
       if (on || s.dim === 1) {
-        const gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, sz * 4.5);
+        const gs = sz * 4.5 * (1 + .6 * bk);
+        const gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, gs);
         gr.addColorStop(0, `rgba(${r},${g},${b},${(on ? .9 : .45) * tw})`); gr.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = gr; ctx.fillRect(s.x - sz * 4.5, s.y - sz * 4.5, sz * 9, sz * 9);
+        ctx.fillStyle = gr; ctx.fillRect(s.x - gs, s.y - gs, gs * 2, gs * 2);
       }
       ctx.fillStyle = `rgba(${Math.min(255, r + 40)},${Math.min(255, g + 40)},${Math.min(255, b + 40)},${tw * (on ? 1 : s.dim)})`;
       ctx.beginPath(); ctx.arc(s.x, s.y, sz / 2, 0, 6.283); ctx.fill();
@@ -332,7 +369,7 @@ canvas.dim{filter:blur(2px) brightness(.5)}
       ctx.fillStyle = gl; ctx.fillRect(mx - 140, my - 140, 280, 280);
     }
     ctx.globalCompositeOperation = 'source-over';
-    if (!touch && !opened) {
+    if (!touch && !opened && br0 === null) {
       const h = cam > .9 ? nearest(mx, my, 22) : null;
       if (h !== hover) {
         hover = h; hoverT = now; cv.style.cursor = h ? (h.voice ? 'pointer' : 'zoom-in') : 'crosshair';
@@ -414,6 +451,7 @@ canvas.dim{filter:blur(2px) brightness(.5)}
   addEventListener('pointerleave', () => { mx = my = -1e4; });
   cv.addEventListener('click', e => {
     if (opened) return close();
+    if (br0 !== null) return;
     const s = cam > .9 ? nearest(e.clientX, e.clientY, touch ? 34 : 22) : null;
     if (s && s.voice) playVoice(s);
     else if (s) open(s);
